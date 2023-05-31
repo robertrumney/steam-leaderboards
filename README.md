@@ -4,7 +4,7 @@ This repository contains a script that enables integration with Steam Leaderboar
 
 ## Prerequisites
 
-- Unity game development environment
+- Unity 2018+
 - Steamworks SDK
 
 ## Getting Started
