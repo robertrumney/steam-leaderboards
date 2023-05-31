@@ -4,7 +4,7 @@ This repository contains a script that enables integration with Steam Leaderboar
 
 ## Prerequisites
 
-- Unity 2018+
+- Unity 2020+
 - Steamworks SDK
 
 ## Getting Started
@@ -14,7 +14,7 @@ This repository contains a script that enables integration with Steam Leaderboar
 3. Attach the `SteamLeaderBoards.cs` script to a game object in your scene.
 4. Configure the `s_leaderboardName` constant to match the name of your leaderboard in the Steamworks backend.
 5. Set up the UI elements (such as `scores` and `actualScores`) to display the leaderboard scores.
-6. Customize the `UpdateScore` method to determine when and how to upload scores to the leaderboard.
+6. Assign your Steam Leaderboard ID name to the `s_leaderboardName` variable. 
 7. Build and run your game with Steam enabled.
 
 ## Usage
