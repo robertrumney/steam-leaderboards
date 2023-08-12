@@ -1,6 +1,10 @@
-# Steam Leaderboards Integration
+# Steam Leaderboards Integration [Legacy]
 
 This repository contains a script that enables integration with Steam Leaderboards in a Unity game. It utilizes the Steamworks API to interact with Steam's leaderboard system, allowing players to upload and retrieve scores from the leaderboard.
+
+# Note
+
+This folder contains the older version of the script, which handles score updating as well as the leaderboards within a single script. Please rather use the updated components in the repo root.
 
 ## Prerequisites
 
