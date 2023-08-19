@@ -23,6 +23,8 @@ This class is in charge of displaying the leaderboard scores within the game's U
 
 1. Import the Steamworks SDK into your Unity project.
 2. Place the `SteamLeaderboardManager.cs` and `SteamLeaderboardDisplay.cs` scripts into your project.
+3. Change the `s_leaderboardName` variable in the `SteamLeaderboardManager.cs` to match the name of your leaderboard.
+   
 
 ### Updating Scores
 
