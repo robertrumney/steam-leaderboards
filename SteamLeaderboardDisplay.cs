@@ -72,7 +72,7 @@ public class SteamLeaderboardDisplay : MonoBehaviour
                 return;
             }
 
-            scores.text += "#" + rank.ToString() + ". " + username.ToUpper() + "  : <color=#E50000> " + leaderboardEntry.m_nScore.ToString("n2") + "</color>\n";
+            scores.text += "#" + rank.ToString() + ". " + username.ToUpper() + "  : <color=white> " + leaderboardEntry.m_nScore.ToString("n0") + "</color>\n";
         }
 
         // Update the "info" text field with additional information
