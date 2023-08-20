@@ -4,12 +4,15 @@ using UnityEngine;
 public class SteamLeaderboardManager : MonoBehaviour
 {
     public static SteamLeaderboardManager instance;
-    private const string s_leaderboardName = "Top Scores";
+    private const string s_leaderboardName = "Scores";
+
     private const ELeaderboardUploadScoreMethod s_leaderboardMethod = ELeaderboardUploadScoreMethod.k_ELeaderboardUploadScoreMethodKeepBest;
-    private static bool s_initialized = false;
-    private static SteamLeaderboard_t s_currentLeaderboard;
+    public static bool s_initialized = false;
+    public static SteamLeaderboard_t s_currentLeaderboard;
     private static readonly CallResult<LeaderboardFindResult_t> m_findResult = new CallResult<LeaderboardFindResult_t>();
     private static readonly CallResult<LeaderboardScoreUploaded_t> m_uploadResult = new CallResult<LeaderboardScoreUploaded_t>();
+
+    public bool getScores = false;
 
     private void Awake()
     {
@@ -32,7 +35,7 @@ public class SteamLeaderboardManager : MonoBehaviour
     {
         if (!SteamManager.Initialized)
             return;
-            
+
         if (!s_initialized)
         {
             Init();
@@ -40,6 +43,7 @@ public class SteamLeaderboardManager : MonoBehaviour
         }
         else
         {
+            //SteamAPICall_t hSteamAPICall = SteamUserStats.UploadLeaderboardScore(s_currentLeaderboard, s_leaderboardMethod, score, null, 0);
             SteamAPICall_t hSteamAPICall = SteamUserStats.UploadLeaderboardScore(s_currentLeaderboard, s_leaderboardMethod, score, null, 0);
             m_uploadResult.Set(hSteamAPICall, OnLeaderboardUploadResult);
             SteamAPI.RunCallbacks();
@@ -60,7 +64,8 @@ public class SteamLeaderboardManager : MonoBehaviour
         s_currentLeaderboard = pCallback.m_hSteamLeaderboard;
         s_initialized = true;
 
-        SteamLeaderboardDisplay.GetScores(); // Call to get scores
+        if(instance.getScores)
+            SteamLeaderboardDisplay.GetScores(); // Call to get scores
     }
 
     private static void OnLeaderboardUploadResult(LeaderboardScoreUploaded_t pCallback, bool failure)
