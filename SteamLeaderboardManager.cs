@@ -11,8 +11,6 @@ public class SteamLeaderboardManager : MonoBehaviour
     private static readonly CallResult<LeaderboardFindResult_t> m_findResult = new CallResult<LeaderboardFindResult_t>();
     private static readonly CallResult<LeaderboardScoreUploaded_t> m_uploadResult = new CallResult<LeaderboardScoreUploaded_t>();
 
-    public int testScore = 0;
-
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -34,13 +32,7 @@ public class SteamLeaderboardManager : MonoBehaviour
     {
         if (!SteamManager.Initialized)
             return;
-
-        if (instance.testScore > 0)
-        {
-            score += instance.testScore;
-            instance.testScore = 0;
-        }
-
+            
         if (!s_initialized)
         {
             Init();
@@ -51,11 +43,6 @@ public class SteamLeaderboardManager : MonoBehaviour
             SteamAPICall_t hSteamAPICall = SteamUserStats.UploadLeaderboardScore(s_currentLeaderboard, s_leaderboardMethod, score, null, 0);
             m_uploadResult.Set(hSteamAPICall, OnLeaderboardUploadResult);
             SteamAPI.RunCallbacks();
-
-            if (score > 40000)
-            {
-                Game.instance.Achieve("jackpot"); // Triggers an in-game achievement
-            }
         }
     }
 
