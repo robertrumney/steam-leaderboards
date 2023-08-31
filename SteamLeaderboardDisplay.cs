@@ -15,7 +15,10 @@ public class SteamLeaderboardDisplay : MonoBehaviour
     private void OnEnable()
     {
         if (info)
+        {
+            info.gameObject.SetActive(true);
             info.text = "LOADING SCORES...";
+        }
     }
 
     public static void GetScores()
