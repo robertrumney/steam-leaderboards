@@ -3,14 +3,16 @@ using UnityEngine;
 
 public class SteamLeaderboardManager : MonoBehaviour
 {
-    public static SteamLeaderboardManager instance;
     private const string s_leaderboardName = "Scores";
 
-    private const ELeaderboardUploadScoreMethod s_leaderboardMethod = ELeaderboardUploadScoreMethod.k_ELeaderboardUploadScoreMethodKeepBest;
+    public static SteamLeaderboardManager instance;
     public static bool s_initialized = false;
     public static SteamLeaderboard_t s_currentLeaderboard;
+    
     private static readonly CallResult<LeaderboardFindResult_t> m_findResult = new CallResult<LeaderboardFindResult_t>();
     private static readonly CallResult<LeaderboardScoreUploaded_t> m_uploadResult = new CallResult<LeaderboardScoreUploaded_t>();
+
+    private const ELeaderboardUploadScoreMethod s_leaderboardMethod = ELeaderboardUploadScoreMethod.k_ELeaderboardUploadScoreMethodKeepBest;
 
     public bool getScores = false;
 
@@ -43,7 +45,6 @@ public class SteamLeaderboardManager : MonoBehaviour
         }
         else
         {
-            //SteamAPICall_t hSteamAPICall = SteamUserStats.UploadLeaderboardScore(s_currentLeaderboard, s_leaderboardMethod, score, null, 0);
             SteamAPICall_t hSteamAPICall = SteamUserStats.UploadLeaderboardScore(s_currentLeaderboard, s_leaderboardMethod, score, null, 0);
             m_uploadResult.Set(hSteamAPICall, OnLeaderboardUploadResult);
             SteamAPI.RunCallbacks();
