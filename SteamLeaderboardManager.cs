@@ -66,7 +66,7 @@ public class SteamLeaderboardManager : MonoBehaviour
         s_initialized = true;
 
         if(instance.getScores)
-            SteamLeaderboardDisplay.GetScores(); // Call to get scores
+            SteamLeaderboardDisplay.GetScores();
     }
 
     private static void OnLeaderboardUploadResult(LeaderboardScoreUploaded_t pCallback, bool failure)
